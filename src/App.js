@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import {connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { TEST_ACTION } from './actions';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            j: 0
+            j: 0,
+            jj: 1
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
+        this.handleClick3 = this.handleClick3.bind(this);
     }
 
     handleClick() {
@@ -21,11 +23,18 @@ class App extends Component {
         this.props.addNum();
     }
 
+    handleClick3() {
+        this.setState({
+            jj: 1
+        })
+    }
+
     render() {
         return (
                 <div>
                     <button onClick={this.handleClick}>Click {this.state.j}!</button>
                     <button onClick={this.handleClick2}>Click {this.props.testData.num}!</button>
+                    <button onClick={this.handleClick3}>Click(测试state不变时会不会刷新？会刷新) {this.state.jj}!</button>
                 </div>
                );
     }
