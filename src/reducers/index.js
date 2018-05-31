@@ -10,6 +10,7 @@ const testData = (state = {
         return state;
     }
 }
+
 const rootReducer = combineReducers({
     testData,
 })
