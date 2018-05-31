@@ -17,7 +17,11 @@ if(process.env.NODE_ENV !== 'production') {
 
 const store = createStore(
     reducer,
-    composeWithDevTools({/* devtools options */})(applyMiddleware(...middleware))
+    composeWithDevTools({/* devtools options */})(
+        applyMiddleware(
+            ...middleware
+        )
+    )
 );
 
 ReactDOM.render(

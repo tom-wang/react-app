@@ -9,6 +9,8 @@ export const createTestAction = (data) => {
 
 export const createTestActionAsync = (data) => {
     return (dispatch, getState) => {
+        // 这里的返回值可以被调用它的dispatch继续返回
+        // 当然这个函数体内可以不调用dispatch，比如只是发起一个ajax请求
         setTimeout(() => {
             dispatch({
                 type: TEST_ACTION,
