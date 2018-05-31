@@ -42,6 +42,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     // 每次状态变更都会执行
+    // 如果map的状态名与外部传入的prop同名，则map的属性值更加优先
     console.log('mapStateToProps called');
     return {
         testData: state.testData
