@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createTestAction, createTestActionPromise, createTestActionAsync } from './actions';
+
+import Foo from './components/Foo';
 
 class App extends Component {
     constructor(props) {
@@ -14,6 +17,7 @@ class App extends Component {
         this.handleClick3 = this.handleClick3.bind(this);
         this.handleClick4 = this.handleClick4.bind(this);
         this.handleClick5 = this.handleClick5.bind(this);
+        this.handleClick6 = this.handleClick6.bind(this);
     }
 
     handleClick() {
@@ -39,14 +43,20 @@ class App extends Component {
         this.props.addNumAsync();
     }
 
+    handleClick6() {
+
+    }
+
     render() {
         return (
                 <div>
-                    <button onClick={this.handleClick}>Click {this.state.j}!</button>
-                    <button onClick={this.handleClick2}>Click {this.props.testData.num}!</button>
-                    <button onClick={this.handleClick4}>Click {this.props.testData.num}!</button>
-                    <button onClick={this.handleClick5}>Click {this.props.testData.num}!</button>
-                    <button onClick={this.handleClick3}>Click(测试state不变时会不会刷新？会刷新) {this.state.jj}!</button>
+                    <Foo foo={this.state.j} />
+                    <button onClick={this.handleClick}>Click {this.state.j}!</button><br />
+                    <button onClick={this.handleClick2}>Click {this.props.testData.num}!</button><br />
+                    <button onClick={this.handleClick4}>Click {this.props.testData.num}!</button><br />
+                    <button onClick={this.handleClick5}>Click {this.props.testData.num}!</button><br />
+                    <button onClick={this.handleClick3}>Click(测试state不变时会不会刷新？会刷新) {this.state.jj}!</button><br />
+                    <button onClick={this.handleClick}>Click(改变Foo组件的prop)</button><br />                
                 </div>
                );
     }
