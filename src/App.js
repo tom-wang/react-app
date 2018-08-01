@@ -10,7 +10,8 @@ class App extends Component {
         super(props);
         this.state = {
             j: 0,
-            jj: 1
+            jj: 1,
+            showFoo: false,
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
@@ -18,6 +19,10 @@ class App extends Component {
         this.handleClick4 = this.handleClick4.bind(this);
         this.handleClick5 = this.handleClick5.bind(this);
         this.handleClick6 = this.handleClick6.bind(this);
+    }
+
+    testThis() {
+        console.log(this);
     }
 
     handleClick() {
@@ -44,19 +49,21 @@ class App extends Component {
     }
 
     handleClick6() {
-
+        this.state.showFoo = !this.state.showFoo;
+        this.setState(this.state);
     }
 
     render() {
         return (
                 <div>
-                    <Foo foo={this.state.j} />
+                    { this.state.showFoo && <Foo foo={this.state.j} /> }
                     <button onClick={this.handleClick}>Click {this.state.j}!</button><br />
                     <button onClick={this.handleClick2}>Click {this.props.testData.num}!</button><br />
                     <button onClick={this.handleClick4}>Click {this.props.testData.num}!</button><br />
                     <button onClick={this.handleClick5}>Click {this.props.testData.num}!</button><br />
                     <button onClick={this.handleClick3}>Click(测试state不变时会不会刷新？会刷新) {this.state.jj}!</button><br />
-                    <button onClick={this.handleClick}>Click(改变Foo组件的prop)</button><br />                
+                    <button onClick={this.handleClick}>Click(改变Foo组件的prop)</button><br />
+                    <button onClick={this.handleClick6}>Click(切换Foo可见状态)!</button><br />
                 </div>
                );
     }

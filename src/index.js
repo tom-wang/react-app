@@ -9,8 +9,11 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import reducer from './reducers';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
 
-const middleware = [thunk, promise];
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [thunk, promise, sagaMiddleware];
 if(process.env.NODE_ENV !== 'production') {
     middleware.push(createLogger());
 }
@@ -23,6 +26,8 @@ const store = createStore(
         )
     )
 );
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>
