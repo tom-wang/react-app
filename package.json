@@ -19,9 +19,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jest": "jest"
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.2"
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "jest": "^23.5.0",
+    "redux-devtools-extension": "^2.13.2",
+    "regenerator-runtime": "^0.12.1"
   }
 }
