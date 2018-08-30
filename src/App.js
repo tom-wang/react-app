@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+//import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createTestAction, createTestActionPromise, createTestActionAsync } from './actions';
 
@@ -12,6 +12,7 @@ class App extends Component {
             j: 0,
             jj: 1,
             showFoo: false,
+            arr: [],
         };
         this.handleClick = this.handleClick.bind(this);
         this.handleClick2 = this.handleClick2.bind(this);
@@ -19,6 +20,7 @@ class App extends Component {
         this.handleClick4 = this.handleClick4.bind(this);
         this.handleClick5 = this.handleClick5.bind(this);
         this.handleClick6 = this.handleClick6.bind(this);
+        this.handleClick7 = this.handleClick7.bind(this);
     }
 
     testThis() {
@@ -53,6 +55,11 @@ class App extends Component {
         this.setState(this.state);
     }
 
+    handleClick7() {
+        this.props.pushTestArrItem(this.props.testArrData);
+    }
+
+
     render() {
         return (
                 <div>
@@ -61,9 +68,10 @@ class App extends Component {
                     <button onClick={this.handleClick2}>Click {this.props.testData.num}!</button><br />
                     <button onClick={this.handleClick4}>Click {this.props.testData.num}!</button><br />
                     <button onClick={this.handleClick5}>Click {this.props.testData.num}!</button><br />
-                    <button onClick={this.handleClick3}>Click(测试state不变时会不会刷新？会刷新) {this.state.jj}!</button><br />
+                    <button onClick={this.handleClick3}>Click(测试state不变时会不会刷新？会刷新，因为数字不是引用类型，每次赋值都相当于是新值) {this.state.jj}!</button><br />
                     <button onClick={this.handleClick}>Click(改变Foo组件的prop)</button><br />
                     <button onClick={this.handleClick6}>Click(切换Foo可见状态)!</button><br />
+                    <button onClick={this.handleClick7}>Click(测试引用类型引用不变时会不会刷新？不刷新)，当前数组值{ this.props.testArrData.join('') }!</button><br />
                 </div>
                );
     }
@@ -74,7 +82,8 @@ const mapStateToProps = state => {
     // 如果map的状态名与外部传入的prop同名，则map的属性值更加优先
     console.log('mapStateToProps called');
     return {
-        testData: state.testData
+        testData: state.testData,
+        testArrData: state.testArrData
     }
 }
 
@@ -96,6 +105,13 @@ const mapDispatchToProps = dispatch => {
             dispatch(createTestActionAsync({
                 num: Math.random()
             }))
+        },
+        pushTestArrItem(testArrData) {
+            testArrData.push(1);
+            dispatch({
+                type: 'TEST_ARR_ACTION',
+                payload: testArrData
+            });
         }
     }
 }

@@ -23,8 +23,15 @@ const testData = handleAction(
     { num: 0 }
 )
 
+const testArrData = handleAction(
+    'TEST_ARR_ACTION',
+    (state, action) => action.payload,
+    []
+)
+
 const rootReducer = combineReducers({
     testData,
+    testArrData,
 })
 
 export default rootReducer;
