@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { handleAction } from 'redux-actions';
 import { TEST_ACTION } from '../actions';
+import { stat } from 'fs';
 
 /*
 const testData = (state = {
@@ -29,9 +30,14 @@ const testArrData = handleAction(
     []
 )
 
+const testCommData = (state, action) => {
+    return {}
+}
+
 const rootReducer = combineReducers({
     testData,
     testArrData,
+    testCommData
 })
 
 export default rootReducer;

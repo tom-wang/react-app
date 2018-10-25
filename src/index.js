@@ -27,6 +27,12 @@ const store = createStore(
     )
 );
 
+//可以订阅更新
+//调用unsubscribe可以注销订阅
+const unsubscribe = store.subscribe(() =>
+  console.log(`store.getState() = `, store.getState())
+);
+
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(

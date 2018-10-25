@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 //import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createTestAction, createTestActionPromise, createTestActionAsync } from './actions';
@@ -6,6 +7,9 @@ import { createTestAction, createTestActionPromise, createTestActionAsync } from
 import Foo from './components/Foo';
 
 class App extends Component {
+    static contextTypes = {
+        store: PropTypes.object.isRequired
+    }
     constructor(props) {
         super(props);
         this.state = {
@@ -61,6 +65,8 @@ class App extends Component {
 
 
     render() {
+        //定义contextTypes后，可以使用this.context.store访问到store（store是由Provider组件提供的）
+        console.log(`this.context(App.js) = `, this.context)
         return (
                 <div>
                     { this.state.showFoo && <Foo foo={this.state.j} /> }
