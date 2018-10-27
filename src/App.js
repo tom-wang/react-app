@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { createTestAction, createTestActionPromise, createTestActionAsync } from './actions';
 
 import Foo from './components/Foo';
+import NormalCompt from './unused/NormalCompt'
+import PureCompt from './unused/PureCompt'
 
 class App extends Component {
     static contextTypes = {
@@ -78,6 +80,8 @@ class App extends Component {
                     <button onClick={this.handleClick}>Click(改变Foo组件的prop)</button><br />
                     <button onClick={this.handleClick6}>Click(切换Foo可见状态)!</button><br />
                     <button onClick={this.handleClick7}>Click(测试引用类型引用不变时会不会刷新？不刷新)，当前数组值{ this.props.testArrData.join('') }!</button><br />
+                    <NormalCompt />
+                    <PureCompt />
                 </div>
                );
     }
