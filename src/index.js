@@ -11,9 +11,12 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
+import middleware1 from './unused/middleware1'
+import middleware2 from './unused/middleware2';
 
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [thunk, promise, sagaMiddleware];
+//前面的middleware先处理
+const middleware = [thunk, promise, sagaMiddleware, middleware1, middleware2];
 if(process.env.NODE_ENV !== 'production') {
     middleware.push(createLogger());
 }
