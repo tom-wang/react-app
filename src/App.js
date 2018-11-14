@@ -34,8 +34,12 @@ class App extends Component {
     }
 
     handleClick() {
-        this.state.j++;
-        this.setState(this.state);
+        this.setState({
+            j: this.state.j+1
+        }, () => {
+            console.log(`setState Done this.state.j = ${this.state.j}`)
+        });
+        console.log(`handleClick this.state.j = ${this.state.j}`)
     }
 
     handleClick2() {
@@ -68,6 +72,7 @@ class App extends Component {
 
     render() {
         //定义contextTypes后，可以使用this.context.store访问到store（store是由Provider组件提供的）
+        console.log(`App.js render`)
         console.log(`this.context(App.js) = `, this.context)
         return (
                 <div>
@@ -82,6 +87,7 @@ class App extends Component {
                     <button onClick={this.handleClick7}>Click(测试引用类型引用不变时会不会刷新？不刷新)，当前数组值{ this.props.testArrData.join('') }!</button><br />
                     <NormalCompt />
                     <PureCompt />
+                    <input defaultValue={this.state.j} />
                 </div>
                );
     }
@@ -102,9 +108,11 @@ const mapDispatchToProps = dispatch => {
     console.log('mapDispatchToProps called');
     return {
         addNum() {
+            console.log('addNum begin')
             dispatch(createTestAction({
                 num: Math.random()
             }));
+            console.log('addNum end')
         },
         addNumPromise() {
             dispatch(createTestActionPromise({

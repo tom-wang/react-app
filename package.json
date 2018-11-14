@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17",
-    "redux": "^3.7.2",
-    "redux-actions": "^2.4.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
     "redux-logger": "^3.0.6",
     "redux-promise": "^0.6.0",
-    "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0"
+    "redux-saga": "^0.16.2",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -24,14 +24,20 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-jest": "^23.4.2",
+    "babel-jest": "^23.6.0",
     "chalk": "^2.4.1",
-    "jest": "^23.5.0",
-    "jest-puppeteer": "^3.3.0",
+    "jest": "^23.6.0",
+    "jest-puppeteer": "^3.5.1",
     "mkdirp": "^0.5.1",
-    "puppeteer": "^1.7.0",
-    "redux-devtools-extension": "^2.13.2",
+    "puppeteer": "^1.10.0",
+    "redux-devtools-extension": "^2.13.5",
     "regenerator-runtime": "^0.12.1",
     "rimraf": "^2.6.2"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
